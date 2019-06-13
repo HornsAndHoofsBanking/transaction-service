@@ -13,9 +13,9 @@ public class Wallet {
     @GenericGenerator(name = "keygen", strategy = "increment")
     @GeneratedValue(generator = "keygen")
     private long id;
-    @Column(name="acc_id")
+    @Column(name = "acc_id")
     private long accId;
-    @Column(name="currency")
+    @Column(name = "currency")
     private String currency;
     @Column(name = "amount")
     private int amount;

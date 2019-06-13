@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "client")
+@Table(name = "user")
 public class Client {
     @Id
     @GenericGenerator(name = "keygen", strategy = "increment")

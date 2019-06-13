@@ -8,12 +8,15 @@ import ru.alexandrov.transaction.repository.OperationRepository;
 import ru.alexandrov.transaction.repository.WalletRepository;
 import ru.alexandrov.transaction.json.request.TransactionRequest;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
 public class TransactionService {
     private final OperationRepository or;
     private final WalletRepository wr;
 
+    @Transactional
     public void doTransaction(TransactionRequest request) throws TransactionException {
         Wallet accountFrom = wr.findByAccIdAndCurrency(request.getFromAccId(), request.getCurrencyFrom());
         Wallet accountTo = wr.findByAccIdAndCurrency(request.getFromAccId(), request.getCurrencyTo());
@@ -30,6 +33,7 @@ public class TransactionService {
         wr.save(accountTo);
         or.save(transfer);
     }
+
     private Transfer makeOperationEntityFromRequest(TransactionRequest transactionRequest) {
         return new Transfer()
                 .setAmount(transactionRequest.getAmount())

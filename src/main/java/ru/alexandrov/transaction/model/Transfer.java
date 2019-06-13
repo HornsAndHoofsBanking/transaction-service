@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "operation")
+@Table(name = "transfer")
 @Accessors(chain = true)
 public class Transfer {
     @Id
